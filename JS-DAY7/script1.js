@@ -1,36 +1,55 @@
-//create element
-const para = DocumentFragment.createElement("p");
-para.textContent = "This is a dynamically added paragraph";
-console.log(para);
 
 
-//append element
-document.getElementById("content").appendChild(para);
+// create element
+// const para = document.createElement("p");
+// para.textContent="This is a dynamically added paragraph";
+// console.log(para);
+
+// append element
+// document.getElementById("content").appendChild(para)
+
+// remove element
+// document.querySelector("#content p").remove()
 
 
-//remove element
-document.querrySelector("#content p").remove()
 
-//add and set attributrs in the tag
-const image = document.getElementById("img");
-image.setAttribute("src","https://img.freepik.com/free-photo/lavender-field-sunset-near-valensole_268835-3910.jpg?semt=ais_hybrid&w=740&q=80")
-image.setAttribute("alt","javascript")
-const gallery = document.getElementById("gallery");
-gallery.appendChild(image);
 
-let date = new Datep();
-console.log(date)
+// const image=document.createElement("img");
 
-setInterval(()=>{
+// to add and set the attribute in the tag
+// image.setAttribute("src","https://www.w3schools.com/js/img_javascript_480.jpg")
+
+// image.setAttribute("alt","JavsScript")
+
+// const gallery = document.getElementById("gallery");
+// gallery.appendChild(image);
+
+
+
+// const childParagraph = document.querySelector('#parent p');
+// const parentDiv = childParagraph.parentElement;
+// console.log(parentDiv.id); // Output: "parent"
+
+// Children
+// nextElementSibling
+
+
+
+
+
+setInterval(() => {
     let date = new Date();
     console.log(date);
 
     let hour = date.getHours();
-    let min = date,getMinutes();
+    let min = date.getMinutes();
     let second = date.getSeconds();
+
     const clock = document.getElementById("digi-clock");
-    clock.textContent=hour+":"+min+":"+second;
-    
-    })
+
+    // clock.textContent=hour+":"+min+":"+second;
+    clock.textContent=`${hour}:${min}:${second}`;
+
+}, 1000)
 
 
