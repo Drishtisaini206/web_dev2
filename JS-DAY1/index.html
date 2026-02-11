@@ -1,14 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    
-    <script src="./script.js"></script>
-</body>
-</html>
+body {
+    background: linear-gradient(135deg, #a2d2ff, #d0f4de); /* Soft blue-green gradient */
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Main Container using Flexbox */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+/* Top Section: Form and Event List Side-by-Side */
+.dashboard-top {
+    display: flex;
+    flex-direction: row; /* Flexbox horizontal alignment */
+    gap: 20px;
+    flex-wrap: wrap; /* Allows wrapping on small screens */
+}
+
+[span_2](start_span)/* Card Styling for Sections[span_2](end_span) */
+.event-form, .event-container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Both sections take equal width */
+    min-width: 320px;
+}
+
+/* Form Styling */
+.event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-form h2 {
+    color: #5d5dff;
+    margin-bottom: 10px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+button {
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #5849c4;
+}
+
+[span_3](start_span)/* Dynamic Event Cards Area[span_3](end_span) */
+.event-container {
+    min-height: 300px;
+}
+
+.event-card {
+    background: #f8f9fa;
+    border-left: 5px solid #6c5ce7;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Style for Delete button inside dynamic card */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff7675;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+}
