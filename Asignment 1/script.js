@@ -1,61 +1,53 @@
-
 const eventForm = document.getElementById("eventform");
 const eventTitle = document.getElementById("eventTitle");
 const eventDate = document.getElementById("eventDate");
 const eventCategory = document.getElementById("eventCategory");
 const eventDescription = document.getElementById("eventDescription");
-const clearAllBtn = document.getElementById("clearAllBin");
+
+const clearAllBtn = document.getElementById("clearAllBin"); 
 const addSampleBtn = document.getElementById("addSampleBin");
-const eventContainer = document.getElementById("eventList"); // Matches your HTML ID
+const eventContainer = document.getElementById("eventList");
 
-
-let sampleEvents = [
+let sampleEvent = [
     {
-        title: "ai summit",
-        date: "2026-08-09",
+        title: "AI summit",
+        date: "2026-07-02",
         category: "Workshop",
-        description: "Deep dive into frontend frameworks."
+        description: "The 2026 AI Summit workshops focused on practical AI implementation, covering predictive modeling, prompt engineering, and responsible AI deployment."
     },
     {
         title: "Robotics event",
-        date: "2026-06-02",
+        date: "2026-05-09",
         category: "Workshop",
-        description: "Networking and future of the web."
+        description: " intensive, 2-day hands-on events aimed at students and hobbyists to introduce them to AI, IoT, and mechanical design."
     }
 ];
 
-
 function createEventCard(eventData) {
     const card = document.createElement("div");
-    card.classList.add("event-item"); // Useful for CSS styling
-    
+    card.className = "event-item";
+
     card.innerHTML = `
-        <button class="delete-btn" onclick="this.parentElement.remove()">X</button>
+        <button class="delete-btn" style="float:right; cursor:pointer;">X</button>
         <h3>${eventData.title}</h3>
-        <div>Date: ${eventData.date}</div>
-        <span>Category: ${eventData.category}</span>
+        <div><strong>Date:</strong> ${eventData.date}</div>
+        <span><strong>Category:</strong> ${eventData.category}</span>
         <p>${eventData.description}</p>
     `;
-    
     return card;
 }
 
-
 function addEvent(eventData) {
-    
     const emptyState = document.getElementById("noEventsText");
-    if (emptyState) {
-        emptyState.remove();
-    }
+    if (emptyState) emptyState.remove();
 
-    eventContainer.appendChild(createEventCard(eventData));
+    const newCard = createEventCard(eventData);
+    eventContainer.appendChild(newCard);
 }
-
 
 eventForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    
     const eventData = {
         title: eventTitle.value,
         date: eventDate.value,
@@ -63,14 +55,27 @@ eventForm.addEventListener("submit", (event) => {
         description: eventDescription.value
     };
 
-    
-    if(eventData.title && eventData.date) {
-        addEvent(eventData);
-        eventForm.reset(); 
-    } else {
-        alert("Please fill in the title and date!");
-    }
-addEvent(eventData);    
+    addEvent(eventData);
+    eventForm.reset();
 });
 
+eventContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete-btn")) {
+        const card = event.target.closest(".event-item");
+        card.remove();
+    }
 
+    if (eventContainer.children.length === 0) {
+        eventContainer.innerHTML = `<p id="noEventsText">No events yet. Add your first event!</p>`;
+    }
+});
+
+addSampleBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    sampleEvent.forEach(addEvent);
+});
+
+clearAllBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    eventContainer.innerHTML = `<p id="noEventsText">No events yet. Add your first event!</p>`;
+});
